@@ -147,7 +147,11 @@
 
 % Beware, we override the figure location!
 \def\caesar_placemarginfigure_indeed[#1][#2]#3#4%
-    {\margintext{\placefigure[here][#2]{#3}{#4}}}
+    {\ifsecondargument
+       \margintext{\placefigure[here][#2]{#3}{#4}}%
+     \else
+       \margintext{\placefigure[here][#1]{#3}{#4}}%
+     \fi}
 
 \unexpanded\def\startplacemarginfigure
     {\dosingleargument\caesar_start_place_margin_figure}
@@ -160,6 +164,29 @@
 
 \definefloat [fulltable][fulltables][table]
 \setupcaption[fulltable][width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
+
+% Margin table is same as margin figure but 
+% the following does not work if | in used in the table
+\unexpanded\def\placemargintable
+    {\dodoubleargument\caesar_placemargintable_indeed}
+
+% Beware, we override the table location!
+\def\caesar_placemargintable_indeed[#1][#2]#3#4%
+    {\ifsecondargument
+       \margintext{\placetable[here][#2]{#3}{#4}}%
+     \else
+       \margintext{\placetable[here][#1]{#3}{#4}}%
+     \fi}
+
+\unexpanded\def\startplacemargintable
+    {\dosingleargument\caesar_start_place_margin_table}
+
+\def\caesar_start_place_margin_table[#1]#2\stopplacemargintable
+    {\margintext
+      {\startplacetable[#1, location=here]% Beware, we override location!
+        #2%
+      \stopplacetable}}
+
 
 %setup the tables in 3 sizes
 \define[3]\smalltable{\setupcaption[width=100pt]\margintext{\placetable[here][#1]{#2}#3}\setupcaption[width=fit]}
