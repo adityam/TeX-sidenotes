@@ -77,15 +77,23 @@
 
 \setupindenting[10pt, yes]
 
-%setup the headings
-\setuphead[chapter][style=\tfd\it,
-                    number=no,
-                    before={\blank[5*big,force]},
-                    after={\blank[4*big,force]}]
-\setuphead[section][style=\tfb\it,
-                    number=no]
-\setuphead[subsection][style=\tfa\it,
-                    number=no]
+% setup the headings
+\setuphead[chapter]
+          [
+            style=\itd,
+            number=no,
+            before={\blank[5*big,force]},
+            after={\blank[4*big,force]},
+          ]
+
+\setuphead[section]
+          [style=\itb,
+           number=no]
+
+\setuphead[subsection]
+          [style=\ita,
+           number=no]
+
 %the table of contents
 \setuplist[chapter][style=\tfc\it,width=0pt,margin=0pt,before={\blank[2*big]}]
 
