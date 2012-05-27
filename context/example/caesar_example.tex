@@ -20,7 +20,7 @@
 \placelist[chapter]
 
 \title{Tables}
-\placelist[table,fulltable]
+\placelist[table,widetable]
 %
 \chapter{Examples}
 The first thing to do is to type some plain text in the document. No surprises here.
@@ -65,12 +65,12 @@ The first one is again a small one in the margin, this is shown in table \in[tab
 \stopplacetable
 Table \in[table2] displays the larger table with a couple of numbers. The last choice is again a table over the full width of the page. This is demonstrated in table \in[table3].
 %
-\startplacefulltable[reference={table3}, title={Even more numbers in a big table are shown here. This table spans across the full page, text width plus margin.}]
+\startplacewidetable[reference={table3}, title={Even more numbers in a big table are shown here. This table spans across the full page, text width plus margin.}]
 \starttable[|c|c|c|c|c|c|c|c|c|c|c|c|]
   \NC  A \NC  B \NC C \NC D \NC E \NC F \NC G \NC H \NC I \NC J \NC K \NC \ L \NC  \SR
 \NC 0.21	\NC 0.23 \NC 0.34 \NC 0.42 \NC 0.53 \NC 0.64 \NC 0.72	\NC 0.33 \NC 0.22\NC 0.04 \NC 0.93 \NC 0.81 \NC\FR
 \stoptable
-\stopplacefulltable
+\stopplacewidetable
 %
 \section{Text across the full page}
 Sometimes it can be useful to put some text across the whole page, which is similar to {\tt largefigure} and {\tt largetable}. This can be done as well, but it does not necessary work across page breaks.
