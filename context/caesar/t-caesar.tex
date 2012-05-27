@@ -124,11 +124,10 @@
 \defineexternalfigure[textwidth][width=\textwidth]
 \defineexternalfigure[fullwidth][width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
 
-\setupfloat[figure][indentnext=no, location={here,top,bottom,page}]
+\setupfloat[figure][indentnext=no, location=inner, default={here,top,bottom,page}]
 
 
 %setup the figures in 3 sizes
-\define[2]\largefigure{\placefigure[here,top,bottom,page][#1]{#2}{\externalfigure[#1][fullwidth]}}%
 \define[2]\smallfigure{\margintext{\placefigure[here][#1]{#2}{\externalfigure[#1][margin]}}}%
 
 %setup the tables in 3 sizes

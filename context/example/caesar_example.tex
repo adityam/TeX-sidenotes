@@ -35,7 +35,9 @@ Figure \in[rectangle] shows that with a small rectangle. The next alternative is
 %
 This larger rectangle is displayed in figure \in[rectangle2]. In case that an even wider figure is needed, the third option spans over the text as well as the margin area. The three options make it easy to choose the appropriate size for a given input file. 
 %
-\largefigure{rectangle3}{An even larger rectangle. This is the widest figure option. Both, the text as well as the margin width are used for the diagram.}%
+\startplacefigure[title={An even larger rectangle. This is the widest figure option. Both, the text as well as the margin width are used for the diagram.}]
+  \externalfigure[rectangle3][fullwidth]
+\stopplacefigure
 % Next section with a variety of tables
 \section{Tables}
 %
