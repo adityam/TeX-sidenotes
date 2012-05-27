@@ -121,7 +121,15 @@
 
 % setup the captions
 \setupcaption[style={\tfx\setupinterlinespace[line=10pt]}, headstyle=\rm, suffix={:}]
-\setupcaption[table][minwidth=\hsize]
+\setupcaption[table][minwidth=\hsize, width=\hsize]
+
+\def\dopreparestackcaptionmin
+  {\undefined
+   \setbox\b_strc_floats_caption\vbox
+     {\strc_floats_caption_set_align
+      \hsize\wd\b_strc_floats_content
+      \doifnothing{\floatcaptionparameter\c!align}\raggedcenter % on purpose overloads align !
+      \strc_floats_make_complete_caption}}
 
 \defineexternalfigure[marginwidth] [width=\layoutparameter\c!rightmargin]
 \defineexternalfigure[textwidth]   [width=\textwidth]
@@ -150,9 +158,10 @@
        #2%
       \stopplacefigure}}
 
+\definefloat [fulltable][fulltables][table]
+\setupcaption[fulltable][width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
 
 %setup the tables in 3 sizes
-\define[3]\largetable{\setupcaption[width=400pt]\placetable[here][#1]{#2}#3\setupcaption[width=fit]}
 \define[3]\smalltable{\setupcaption[width=100pt]\margintext{\placetable[here][#1]{#2}#3}\setupcaption[width=fit]}
 
 \setvariables
