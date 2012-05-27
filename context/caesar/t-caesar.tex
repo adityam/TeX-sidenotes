@@ -10,23 +10,22 @@
 
 \unprotect
 
-% module code
-% setup the page format
-\definepapersize[wissenschaft][width=170mm,height=240mm]
-% use the new page format
-\setuppapersize[wissenschaft]
-% shape the page layout
+\definepapersize[wissenschaft][width=170mm, height=240mm]
+\setuppapersize [wissenschaft]
+
 \setuplayout[topspace=40pt,
-            header=0pt,
-            headerdistance=0pt,
-            backspace=42pt,
-            leftmargin=0pt,
-            width=280pt,
-            height=560pt,
-            rightmargindistance=20pt,
-            rightmargin=100pt,
-            footer=0pt]
-% distinguish between verso and recto pages
+             header=0pt,
+             headerdistance=0pt,
+             height=560pt,
+             footer=0pt,
+             %
+             backspace=42pt,
+             leftmargin=0pt,
+             width=280pt,
+             rightmargindistance=20pt,
+             rightmargin=100pt]
+
+% doublesided layout to get different verso and recto pages
 \setuppagenumbering[alternative=doublesided]
 
 % setup the side notes
