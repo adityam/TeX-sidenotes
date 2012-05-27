@@ -121,12 +121,14 @@
 
 % setup the captions
 \setupcaption[style={\tfx\setupinterlinespace[line=10pt]}, headstyle=\rm, suffix={:}]
+\setupcaption[table][minwidth=\hsize]
 
 \defineexternalfigure[marginwidth] [width=\layoutparameter\c!rightmargin]
 \defineexternalfigure[textwidth]   [width=\textwidth]
 \defineexternalfigure[fullwidth]   [width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
 
 \setupfloat[figure][indentnext=no, location=inner, default={here,top,bottom,page}]
+\setupfloat[table] [indentnext=no, location=inner, default={here,top,bottom,page}]
 
 % \placefigure[outermargin] does not play nice with margintext.
 % We need \margintext{\palcefigure[...]{...}}
@@ -151,7 +153,6 @@
 
 %setup the tables in 3 sizes
 \define[3]\largetable{\setupcaption[width=400pt]\placetable[here][#1]{#2}#3\setupcaption[width=fit]}
-\define[3]\normaltable{\setupcaption[width=280pt]\placetable[here][#1]{#2}#3\setupcaption[width=fit]}
 \define[3]\smalltable{\setupcaption[width=100pt]\margintext{\placetable[here][#1]{#2}#3}\setupcaption[width=fit]}
 
 \setvariables

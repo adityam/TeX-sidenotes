@@ -54,12 +54,12 @@ This larger rectangle is displayed in \in{figure}[rectangle2]. In case that an e
 The same options are also available for tables.
 The first one is again a small one in the margin, this is shown in table \in[table1]. The next option is a table across the text width. %
 %
-\normaltable{table2}{A couple of numbers in a larger table. This table spans the usual text width.}{%
+\startplacetable[reference=table2, title={A couple of numbers in a larger table. This table spans the usual text width.}]
 \starttable[|c|c|c|c|c|c|c|c|]
   \NC  A \NC  B \NC C \NC D \NC E \NC F \NC G \NC H \NC \SR
 \NC 0.21	\NC 0.23 \NC 0.34 \NC 0.42 \NC 0.53 \NC 0.64 \NC 0.72	\NC 0.33 \NC\FR
 \stoptable
-}%
+\stopplacetable
 Table \in[table2] displays the larger table with a couple of numbers. The last choice is again a table over the full width of the page. This is demonstrated in table \in[table3].
 %
 \largetable{table3}{Even more numbers in a big table are shown here. This table spans across the full page, text width plus margin.}{%
