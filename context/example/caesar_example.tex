@@ -25,15 +25,19 @@ The layout has ample margins to allow annotations on the page.\annotation{All in
 For more information about this concept compare e.g.\ the books of Edward Tufte.\sidecite[left={See e.g.\ }, right={ And other Tufte books.}][Tufte1990,Tufte2006]
 % A section with a couple of figures
 \section{Figures}
-\smallfigure{rectangle}{A small rectangle put in the margin.}%
+\startplacemarginfigure[ title={A small rectangle put in the margin.}, reference=rectangle]
+  \externalfigure[rectangle][marginwidth]
+\stopplacemarginfigure
+
 There are a couple of options to include figures in the document. The first one is a figure in the margin.
-Figure \in[rectangle] shows that with a small rectangle. The next alternative is a figure in the text frame. %
+\in{Figure}[rectangle] shows that with a small rectangle. The next alternative is a figure in the text frame. %
 %
-\startplacefigure[title={A larger rectangle in the main area of the text, i.e.\ it does not span into the margin.}]
+\startplacefigure[title={A larger rectangle in the main area of the text, i.e.\ it does not span into the margin.},
+  reference=rectangle2]
   \externalfigure[rectangle2][textwidth]
 \stopplacefigure
 %
-This larger rectangle is displayed in figure \in[rectangle2]. In case that an even wider figure is needed, the third option spans over the text as well as the margin area. The three options make it easy to choose the appropriate size for a given input file. 
+This larger rectangle is displayed in \in{figure}[rectangle2]. In case that an even wider figure is needed, the third option spans over the text as well as the margin area. The three options make it easy to choose the appropriate size for a given input file. 
 %
 \startplacefigure[title={An even larger rectangle. This is the widest figure option. Both, the text as well as the margin width are used for the diagram.}]
   \externalfigure[rectangle3][fullwidth]

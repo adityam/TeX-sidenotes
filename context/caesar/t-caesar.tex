@@ -29,6 +29,8 @@
 \setuppagenumbering[alternative=doublesided]
 
 % setup the side notes
+\setupmargindata[stack=continue]
+
 \setupmargindata
     [margintext]
     [location=outer,
@@ -120,15 +122,33 @@
 % setup the captions
 \setupcaption[style={\tfx\setupinterlinespace[line=10pt]}, headstyle=\rm, suffix={:}]
 
-\defineexternalfigure[margin]   [width=\layoutparameter\c!rightmargin]
-\defineexternalfigure[textwidth][width=\textwidth]
-\defineexternalfigure[fullwidth][width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
+\defineexternalfigure[marginwidth] [width=\layoutparameter\c!rightmargin]
+\defineexternalfigure[textwidth]   [width=\textwidth]
+\defineexternalfigure[fullwidth]   [width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
 
 \setupfloat[figure][indentnext=no, location=inner, default={here,top,bottom,page}]
 
+% \placefigure[outermargin] does not play nice with margintext.
+% We need \margintext{\palcefigure[...]{...}}
+% So we define wrappers with the same interface as default ConTeXt commands
 
-%setup the figures in 3 sizes
-\define[2]\smallfigure{\margintext{\placefigure[here][#1]{#2}{\externalfigure[#1][margin]}}}%
+\unexpanded\def\placemarginfigure
+    {\dodoubleargument\caesar_placemarginfigure_indeed}
+
+% Beware, we override the figure location!
+\def\caesar_placemarginfigure_indeed[#1][#2]#3#4%
+    {\margintext{\placefigure[here][#2]{#3}{#4}}}
+
+\unexpanded\def\startplacemarginfigure
+    {\dosingleargument\caesar_start_place_margin_figure}
+
+\def\caesar_start_place_margin_figure[#1]#2\stopplacemarginfigure
+    {\margintext
+      {\startplacefigure[#1, location=here]% Beware, we override location!
+       #2%
+      \stopplacefigure}}
+
+\setuvalue{\e!stop\e!place\v!margin\v!figure}{}
 
 %setup the tables in 3 sizes
 \define[3]\largetable{\setupcaption[width=400pt]\placetable[here][#1]{#2}#3\setupcaption[width=fit]}
