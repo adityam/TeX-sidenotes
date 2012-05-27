@@ -29,7 +29,8 @@
 \setuppagenumbering[alternative=doublesided]
 
 % setup the side notes
-\setupmargindata [margintext]
+\setupmargindata
+    [margintext]
     [location=outer,
      width=100pt,
      align=flushouter,
@@ -39,15 +40,15 @@
 \usemodule[annotation]
 
 % setup the numbering of the side notes
-\define[2]\AnnotationCommand 
-{\high{\rawnumber[annotation]}% 
-\margintext{\high{#1} #2\vskip4pt}} 
+\define[2]\annotation_command 
+    {\high{\rawnumber[annotation]}% 
+     \margintext{\high{#1} #2\vskip4pt}} 
 
 \defineannotation 
-[annotation] 
-[alternative=command, 
-command=\AnnotationCommand, 
-number=yes] 
+    [annotation] 
+    [alternative=command, 
+     command=\annotation_command, 
+     number=yes] 
 
 %text across the full width of the page
 \define[2]\FullwidthCommand 
