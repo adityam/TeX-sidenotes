@@ -29,7 +29,9 @@ For more information about this concept compare e.g.\ the books of Edward Tufte.
 There are a couple of options to include figures in the document. The first one is a figure in the margin.
 Figure \in[rectangle] shows that with a small rectangle. The next alternative is a figure in the text frame. %
 %
-\normalfigure{rectangle2}{A larger rectangle in the main area of the text, i.e.\ it does not span into the margin.}%
+\startplacefigure[title={A larger rectangle in the main area of the text, i.e.\ it does not span into the margin.}]
+  \externalfigure[rectangle2][textwidth]
+\stopplacefigure
 %
 This larger rectangle is displayed in figure \in[rectangle2]. In case that an even wider figure is needed, the third option spans over the text as well as the margin area. The three options make it easy to choose the appropriate size for a given input file. 
 %
