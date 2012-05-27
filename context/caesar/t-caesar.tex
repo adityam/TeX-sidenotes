@@ -1,10 +1,10 @@
 %D \module
-%D   [     file=caesar.tex, 
+%D   [     file=t-caesar.tex, 
 %D      version=0.55,
 %D        title=caesar, 
 %D     subtitle=sidenotes,
 %D       author=Andy Thomas,
-%D         date=120523, 
+%D         date=2012.05.27, 
 %D    copyright=Andy Thomas, 
 %D      license=Public Domain]
 
@@ -186,10 +186,6 @@
       {\startplacetable[#1, location=here]% Beware, we override location!
         #2%
       \stopplacetable}}
-
-
-%setup the tables in 3 sizes
-\define[3]\smalltable{\setupcaption[width=100pt]\margintext{\placetable[here][#1]{#2}#3}\setupcaption[width=fit]}
 
 \setvariables
   [titlepage]
