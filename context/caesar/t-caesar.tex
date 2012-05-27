@@ -95,13 +95,20 @@
            number=no]
 
 %the table of contents
-\setuplist[chapter][style=\tfc\it,width=0pt,margin=0pt,before={\blank[2*big]}]
+\setuplist
+  [chapter]
+  [
+    style=\itc,
+    width=0pt, 
+    margin=0pt, 
+    before={\blank[2*big]},
+  ]
 
-%setup the captions
-\setupcaption[style={\tfx\setupinterlinespace[line=10pt]},headstyle=\rm,suffix={:}]
+% use backspace as location anchor 
+\setupfloats[indentnext=no, location=inner]
 
-%use backspace as location anchor 
-\setupfloats[indentnext=no,location=inner]
+% setup the captions
+\setupcaption[style={\tfx\setupinterlinespace[line=10pt]}, headstyle=\rm, suffix={:}]
 
 %
 % High level macros start here
