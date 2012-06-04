@@ -42,19 +42,15 @@
 \usemodule[annotation]
 
 % setup the numbering of the side notes
-\define[2]\caesar_annotation_command 
-    {\high{\rawnumber[annotation]}% 
+\define[2]\caesar_sidenote_command 
+    {\high{\rawnumber[sidenote]}% 
      \margintext{\high{#1} #2\vskip4pt}} 
 
 \defineannotation 
-    [annotation] 
+    [sidenote] 
     [alternative=command, 
-     command=\caesar_annotation_command, 
+     command=\caesar_sidenote_command, 
      number=yes] 
-
-\definemeasure
-    [fullwidth_extra]
-    [\the\dimexpr\layoutparameter\c!rightmargin + \layoutparameter\c!rightmargindistance]
 
 % text across the full width of the page
 \define[1]\caesar_fullwidth_command 
@@ -69,13 +65,14 @@
 
 % put citations in the margin
 \unexpanded\def\sidecite{\dodoubleargument\sidecite_indeed}
-\def\sidecite_indeed[#1][#2]%
-    {\getparameters[caesar_sidecite_][left=,right=,#1]%
-      \margintext
-          {\caesar_sidecite_left
-           \cite[data][#2]%
-           \caesar_sidecite_right}}
 
+\def\sidecite_indeed[#1][#2]%
+         {\getparameters[caesar_sidecite_][left=,right=,#1]%
+           \sidenote
+               {\getvalue{caesar_sidecite_left}%
+                \cite[data][#2]%
+                \getvalue{caesar_sidecite_right}}}
+                
 % Enable old style numbers and protrusion
 \definefontfeature[default][default][onum=yes, protrusion=quality, expansion=quality]
 
@@ -123,7 +120,9 @@
 \setupcaption[style={\tfx\setupinterlinespace[line=10pt]}, headstyle=\rm, suffix={:}]
 \setupcaption[table][minwidth=\hsize, width=\hsize]
 
-\defineexternalfigure[marginwidth] [width=\layoutparameter\c!rightmargin]
+\definemeasure[fullwidth_extra][\the\dimexpr\rightmargindistance+\rightmarginwidth]
+
+\defineexternalfigure[marginwidth] [width=\rightmarginwidth]
 \defineexternalfigure[textwidth]   [width=\textwidth]
 \defineexternalfigure[fullwidth]   [width=\the\dimexpr\textwidth+\measure{fullwidth_extra}\relax]
 
@@ -189,12 +188,12 @@
   ]
 
 \startsetups caesar:titlepage
-    {\ssc\noindent\kerncharacters[0.125]\WORD{\getvariable{titlepage}{author}}\endgraf}
+    {\ssc\noindentation\kerncharacters[0.125]\WORD{\getvariable{titlepage}{author}}\endgraf}
     \blank[100pt]
     {\setupbodyfont[sansserif,38pt]\setupinterlinespace[line=50pt]
      \noindentation\kerncharacters[0.15]\WORD{\getvariable{titlepage}{title}}\endgraf}
     \vfill
-    {\ss\tfc\kerncharacters[0.125]\WORD{\getvariable{titlepage}{publisher}}\endgraf}
+    {\ssc\noindentation\kerncharacters[0.125]\WORD{\getvariable{titlepage}{publisher}}\endgraf}
 \stopsetups
 
 \protect \endinput
